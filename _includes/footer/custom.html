@@ -1,0 +1,30 @@
+{%- comment -%}
+테마가 상단 메뉴를 캐시해서(include_cached) Liquid 로는 페이지마다 못 바꾼다. 그래서 스크립트로
+① 영문 페이지면 메뉴 이름·주소를 영문으로 ② 언어 전환 링크를 지금 페이지의 반대 언어 주소로 ③ 지금 탭 표시.
+{%- endcomment -%}
+<script>
+  (function () {
+    var base = "{{ site.baseurl }}";
+    var path = location.pathname.slice(base.length) || "/";
+    var isEn = path === "/en/" || path.indexOf("/en/") === 0;
+    var kind = {{ page.kind | default: "" | jsonify }};
+    var area = {{ page.area | default: page.solution | default: "" | jsonify }};
+    var labels = {};
+    var tab = kind === "product" ? "/apex-os/" : { "onto": "/apex-os/", "cv": "/computer-vision/", "ts": "/time-series/", "sw": "/software/" }[area];
+    document.documentElement.lang = isEn ? "en" : "ko";
+    document.querySelectorAll(".masthead__menu-item a").forEach(function (a) {
+      var href = a.getAttribute("href").slice(base.length);
+      if (href === "/en/") {
+        a.textContent = isEn ? "KO" : "EN";
+        a.classList.add("lang-toggle");
+        a.setAttribute("lang", isEn ? "ko" : "en");
+        a.setAttribute("href", base + (isEn ? (path.replace(/^\/en/, "") || "/") : "/en" + path));
+        return;
+      }
+      if (labels[href]) a.textContent = labels[href];
+      if (href === tab) { a.classList.add("is-active"); a.setAttribute("aria-current", "page"); }
+      if (isEn) a.setAttribute("href", base + "/en" + href);
+    });
+    if (isEn) document.querySelectorAll(".site-logo").forEach(function (a) { a.setAttribute("href", base + "/en/"); });
+  })();
+</script>

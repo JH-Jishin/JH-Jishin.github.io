@@ -1,0 +1,85 @@
+# JISHIN Portfolio
+# 테마: Minimal Mistakes (https://mmistakes.github.io/minimal-mistakes/) — 디자인은 테마 그대로 쓰고 색·글꼴만 맞춘다.
+# 이 파일을 고친 뒤에는 `bundle exec jekyll serve` 를 다시 띄워야 반영된다.
+
+remote_theme: "mmistakes/minimal-mistakes@4.28.1"
+minimal_mistakes_skin: "default"
+
+locale: "ko-KR"
+title: "JISHIN"
+masthead_title: "Portfolio"
+title_separator: "|"
+name: "주식회사 지신"
+description: "JISHIN Portfolio — APEX OS · SI"
+url: "https://jh-jishin.github.io"
+baseurl: ""
+logo: "/assets/images/logo.png"
+teaser: "/assets/images/teaser-default.jpg"
+repository: "JH-Jishin/JH-Jishin.github.io"
+search: false
+breadcrumbs: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+include:
+  - _pages
+
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
+  portfolio_en:
+    output: true
+    permalink: /en/portfolio/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: false
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: false
+      show_date: false
+      classes: wide
+  - scope:
+      path: ""
+      type: portfolio_en
+    values:
+      layout: single
+      author_profile: false
+      share: false
+      show_date: false
+      classes: wide
+      locale: "en-US"
+  - scope:
+      path: "_pages/en"
+    values:
+      locale: "en-US"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - tools
+
+copyright: "주식회사 지신"
+atom_feed:
+  hide: true

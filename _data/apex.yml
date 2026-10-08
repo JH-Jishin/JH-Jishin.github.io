@@ -1,0 +1,185 @@
+# Product 페이지(APEX OS) 원고. ko / en 두 벌. 모듈 id 는 offerings.modules 와 modules 목록이 서로 맞아야 한다.
+
+ko:
+  title: "APEX OS"
+  lead: "공장에 이미 있는 ERP·MES·설비를 그대로 두고 그 안의 작업지시·BOM·재고·설비 조건 같은 데이터를 하나의 온톨로지로 묶습니다. 그 위에서 생산계획 수립, 원인 추적, 업무 개선, 변경 시뮬레이션을 돌립니다."
+  diagram_title: "기존 시스템 위에 바로 얹습니다"
+  diagram_sub: "어떤 시스템이든 연결하고 하나의 객체 체계 위에서 만듭니다."
+  inputs_label: "Inputs · 연결 시스템"
+  modules_label: "Activated modules · 온톨로지 객체"
+  workflows_label: "Workflows · 업무"
+  outcomes_label: "목표"
+  examples_label: "구현 예"
+  data_label: "데이터"
+  personas_label: "사용자"
+  case_prefix: "사례"
+  arch_title: "구조"
+  cases_link: "Ontology 사례 보기 →"
+
+en:
+  title: "APEX OS"
+  lead: "APEX OS leaves the ERP, MES and equipment a plant already runs in place and ties the data inside them — work orders, BOMs, inventory, machine conditions — into a single ontology. On top of it, teams plan, find root causes, fix workflows and test changes before they happen."
+  diagram_title: "Builds on the systems you already run"
+  diagram_sub: "Connect to anything, then build on one object model."
+  inputs_label: "Inputs"
+  modules_label: "Activated modules"
+  workflows_label: "Workflows"
+  outcomes_label: "Goals"
+  examples_label: "Implementation examples"
+  data_label: "Data sources"
+  personas_label: "Personas"
+  case_prefix: "Case"
+  arch_title: "Architecture"
+  cases_link: "See Ontology cases →"
+
+inputs:
+  - { ko: "ERP (SAP · 더존)", en: "ERP (SAP · Douzone)" }
+  - { ko: "MES · POP", en: "MES · POP" }
+  - { ko: "SCADA · PLC", en: "SCADA · PLC" }
+  - { ko: "QMS · 검사기", en: "QMS · inspection gear" }
+  - { ko: "설비 센서 · IoT", en: "Machine sensors · IoT" }
+  - { ko: "고객사 서열 포털", en: "Customer sequence portals" }
+  - { ko: "엑셀 · 문서", en: "Spreadsheets · documents" }
+
+modules:
+  - { id: wo, ko: "작업지시", en: "Work orders" }
+  - { id: demand, ko: "수요 · 고객 서열", en: "Demand · sequences" }
+  - { id: inv, ko: "재고 · 입고 예정", en: "Inventory · receipts" }
+  - { id: bom, ko: "BOM", en: "BOM" }
+  - { id: routing, ko: "라우팅 · C/T", en: "Routings · cycle time" }
+  - { id: line, ko: "설비 · 라인 캐파", en: "Machines · line capacity" }
+  - { id: mold, ko: "금형", en: "Molds · dies" }
+  - { id: lot, ko: "자재 로트", en: "Material lots" }
+  - { id: qc, ko: "품질 검사 · 불량", en: "Inspection · defects" }
+  - { id: cond, ko: "설비 조건 · 가동 이력", en: "Machine conditions · uptime" }
+  - { id: change, ko: "4M 변경 이력", en: "4M change history" }
+  - { id: flow, ko: "업무 처리 이력", en: "Workflow history" }
+
+offerings:
+  - key: plan
+    letter: "01"
+    name: "APEX Plan"
+    stage: { ko: "현장 적용", en: "In use" }
+    tagline: { ko: "생산계획 · 작업지시 자동화", en: "Production planning and work orders" }
+    modules: [wo, demand, inv, bom, routing, line, mold]
+    workflows:
+      ko: ["생산계획 수립", "작업지시 발행", "부족 사양 경보"]
+      en: ["Build production plans", "Issue work orders", "Shortage alerts"]
+    outcomes:
+      ko:
+        - "수요·재고·캐파·제약을 한 번에 계산해 계획 수립 시간을 줄입니다"
+        - "계획 결과에서 원천 데이터까지 근거를 거슬러 볼 수 있게 합니다"
+        - "담당자가 확정한 조정을 기록해 다음 계획에 반영합니다"
+      en:
+        - "Cut planning time by computing demand, inventory, capacity and constraints together"
+        - "Trace every plan back to the source data behind it"
+        - "Record planner adjustments and carry them into the next plan"
+    examples:
+      ko:
+        - { text: "라인별 작업잔량과 가용능력을 비교해 대체라인과 투입 우선순위를 제안합니다", case: "D사" }
+        - { text: "고객 서열로 이론재고를 계산해 부족 사양과 D+3 양산 수량을 산출합니다", case: "S사" }
+        - { text: "설비·금형·인력의 동시 가용성을 반영해 실제로 돌릴 수 있는 일정을 짭니다" }
+      en:
+        - { text: "Compare remaining work and available capacity by line to propose alternate lines and release priorities", case: "D" }
+        - { text: "Calculate theoretical inventory from customer sequences to find short specs and D+3 production quantities", case: "S" }
+        - { text: "Build schedules that hold up by checking machine, mold and labor availability together" }
+    data:
+      ko: ["작업지시", "수요 · 판매계획", "고객 서열", "재고 · 입고 예정", "BOM", "라우팅 · C/T", "라인 · 설비 캐파", "금형", "근무 캘린더"]
+      en: ["Work orders", "Demand · sales plans", "Customer sequences", "Inventory · scheduled receipts", "BOMs", "Routings · cycle times", "Line · machine capacity", "Molds", "Shift calendars"]
+    personas:
+      ko: ["생산계획 담당", "공장장", "라인 반장"]
+      en: ["Production planner", "Plant manager", "Line supervisor"]
+
+  - key: trace
+    letter: "02"
+    name: "APEX Trace"
+    stage: { ko: "현장 적용", en: "In use" }
+    tagline: { ko: "이상 감지 · 원인 역추적", en: "Anomaly detection and root cause" }
+    modules: [wo, lot, qc, cond, change, inv]
+    workflows:
+      ko: ["이상 감지", "원인 로트 역추적", "영향 범위 격리"]
+      en: ["Detect anomalies", "Trace root-cause lots", "Contain affected scope"]
+    outcomes:
+      ko:
+        - "지표가 기준을 넘는 순간 자동으로 잡아냅니다"
+        - "부서마다 따로 조회하던 원인 규명을 시스템 역추적으로 바꿉니다"
+      en:
+        - "Catch the moment a metric crosses its limit"
+        - "Replace department-by-department lookups with system-wide tracing"
+    examples:
+      ko:
+        - { text: "도장 불량률이 상한을 넘자 MES·ERP·SCADA 이력을 거슬러 원인 자재 로트를 좁혔습니다", case: "D사" }
+        - { text: "같은 기간 설비·작업자·금형·작업표준(4M) 변경 여부를 교차 확인합니다" }
+        - { text: "영향 받은 로트 범위를 찾아 격리 대상을 제시합니다" }
+      en:
+        - { text: "When a paint defect rate crossed its limit, traced MES, ERP and SCADA history back to the suspect material lot", case: "D" }
+        - { text: "Cross-check whether machines, operators, molds or work standards (4M) changed in the same period" }
+        - { text: "Identify the affected lot range and propose what to quarantine" }
+    data:
+      ko: ["생산 실적 · 불량 기록", "자재 입고 로트", "수입검사 결과", "설비 조건(SCADA 태그)", "4M 변경 이력", "출하 이력"]
+      en: ["Production results · defect records", "Material receipt lots", "Incoming inspection results", "Machine conditions (SCADA tags)", "4M change history", "Shipment history"]
+    personas:
+      ko: ["품질 매니저", "공정 엔지니어", "공장장"]
+      en: ["Quality manager", "Process engineer", "Plant manager"]
+
+  - key: advisor
+    letter: "03"
+    name: "APEX Advisor"
+    stage: { ko: "적용 진행", en: "Rolling out" }
+    tagline: { ko: "업무 흐름 개선 제안", en: "Workflow improvement" }
+    modules: [flow, wo, inv, demand, cond]
+    workflows:
+      ko: ["업무 흐름 분석", "개선안 비교"]
+      en: ["Analyze workflows", "Compare improvements"]
+    outcomes:
+      ko:
+        - "현장에서 실제로 일이 흘러가는 방식을 데이터로 드러냅니다"
+        - "개선안을 기존 흐름과 같은 입력으로 돌려 비교합니다"
+      en:
+        - "Make the way work actually flows on the floor visible in data"
+        - "Run improvements against the same inputs as today's workflow and compare"
+    examples:
+      ko:
+        - { text: "엑셀 워크북에 숨어 있던 계획 규칙을 꺼내 온톨로지 규칙으로 옮깁니다", case: "S사" }
+        - { text: "업무 흐름을 그래프로 분석해 시간이 몰리는 단계를 짚습니다" }
+        - { text: "기존 흐름과 제안 흐름을 같은 입력으로 실행해 결과를 나란히 봅니다" }
+      en:
+        - { text: "Pull planning rules hidden in spreadsheet workbooks into ontology rules", case: "S" }
+        - { text: "Analyze workflows as a graph to pinpoint where time piles up" }
+        - { text: "Run the current and proposed flows on the same inputs and compare results side by side" }
+    data:
+      ko: ["작업지시 상태 이력", "승인 · 결재 흐름", "비가동 이력", "엑셀 · 문서 규칙", "담당자 수정 이력"]
+      en: ["Work order status history", "Approval flows", "Downtime history", "Spreadsheet · document rules", "Planner edit history"]
+    personas:
+      ko: ["공장장", "생산관리 팀장", "혁신 · IE 담당"]
+      en: ["Plant manager", "Production control lead", "Continuous improvement · IE"]
+
+  - key: twin
+    letter: "04"
+    name: "APEX Twin"
+    stage: { ko: "개발 중", en: "In development" }
+    tagline: { ko: "라인 디지털 트윈 · What-if", en: "Line digital twin and what-if" }
+    modules: [line, cond, routing, wo, inv]
+    workflows:
+      ko: ["What-if 시뮬레이션", "가상 시운전"]
+      en: ["What-if simulation", "Virtual commissioning"]
+    outcomes:
+      ko:
+        - "계획 변경이 라인에 주는 영향을 실행 전에 확인합니다"
+      en:
+        - "See how a plan change will hit the line before it runs"
+    examples:
+      ko:
+        - { text: "라인 3D 모델에 설비 상태를 실시간으로 반영합니다" }
+        - { text: "생산계획 What-if 시뮬레이션으로 공정별 부하를 미리 봅니다" }
+        - { text: "가상 시운전을 거쳐 담당자 승인 후 실라인에 적용합니다" }
+      en:
+        - { text: "Reflect live machine status on a 3D model of the line" }
+        - { text: "Preview load by process with what-if simulation of the production plan" }
+        - { text: "Apply to the real line after virtual commissioning and sign-off" }
+    data:
+      ko: ["설비 상태 · 가동 이력", "라인 레이아웃", "공정 C/T", "생산계획", "물류(AGV) 이동"]
+      en: ["Machine status · uptime history", "Line layout", "Process cycle times", "Production plans", "Material flow (AGV)"]
+    personas:
+      ko: ["공정 엔지니어", "설비 매니저", "공장장"]
+      en: ["Process engineer", "Maintenance manager", "Plant manager"]

@@ -1,0 +1,28 @@
+{%- comment -%} 테마 archive-single(grid) 을 바탕으로 상태 배지와 data-status 만 더한 카드 {%- endcomment -%}
+{%- assign en = include.en -%}
+{%- if post.header.teaser -%}{%- capture teaser -%}{{ post.header.teaser }}{%- endcapture -%}{%- else -%}{%- assign teaser = site.teaser -%}{%- endif -%}
+<div class="grid__item" data-status="{{ post.status | default: 'none' }}" data-types="{{ post.types | join: '|' }}" data-solution="{{ post.solution }}">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    <div class="archive__item-teaser">
+      <img src="{{ teaser | relative_url }}" alt="" loading="lazy">
+    </div>
+    {%- unless include.compact -%}
+    {%- if post.status == "done" -%}
+      <span class="status-badge status-badge--done">{% if en %}Completed{% else %}완료{% endif %}</span>
+    {%- elsif post.status == "ongoing" -%}
+      <span class="status-badge status-badge--ongoing">{% if en %}In progress{% else %}진행 중{% endif %}</span>
+    {%- endif -%}
+    {%- if post.kind == "apex-os" -%}<span class="type-chip type-chip--apex">APEX OS</span>{%- endif -%}
+    {%- for ty in post.types -%}<span class="type-chip">{{ ty }}</span>{%- endfor -%}
+    {%- endunless -%}
+    {%- assign t_client = post.title | split: " (" | first -%}
+    {%- assign t_work = post.title | remove_first: t_client | remove_first: " (" -%}
+    {%- assign t_last = t_work | slice: -1, 1 -%}{%- if t_last == ")" -%}{%- assign t_size = t_work | size | minus: 1 -%}{%- assign t_work = t_work | slice: 0, t_size -%}{%- endif -%}
+    {%- assign t_ind = "" -%}{%- for it in post.sidebar -%}{%- if it.title == "고객" or it.title == "Client" -%}{%- assign t_ind = it.text -%}{%- endif -%}{%- endfor -%}
+    <p class="card-client">{{ t_client }}{% if t_ind != "" %} · {{ t_ind }}{% endif %}</p>
+    <h2 class="archive__item-title no_toc p-name" itemprop="headline">
+      <a class="u-url" href="{{ post.url | relative_url }}" rel="permalink">{% if t_work != "" %}{{ t_work }}{% else %}{{ post.title }}{% endif %}</a>
+    </h2>
+    {% if post.excerpt and include.compact != true %}<p class="archive__item-excerpt p-summary" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+  </article>
+</div>

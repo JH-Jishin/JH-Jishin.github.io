@@ -1,0 +1,349 @@
+---
+# 테마 기본 스타일 위에 브랜드 색과 국문 조판만 얹는다
+---
+
+$sans-serif: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+$primary-color: #245CD1;
+$link-color: #245CD1;
+$masthead-link-color: #0C162A;
+$masthead-link-color-hover: #245CD1;
+
+@charset "utf-8";
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+// 국문 조판: 어절 단위 줄바꿈, 행간·자간
+body {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  letter-spacing: -0.01em;
+}
+.page__content p,
+.archive__item-excerpt {
+  line-height: 1.75;
+}
+
+// 워드마크(981×119)는 가로로 길어서 높이를 낮춘다
+.site-logo img {
+  max-height: 1.1rem;
+}
+.site-title {
+  font-weight: 500;
+}
+
+// 캡션도 본문과 같은 글꼴로
+figcaption,
+.page__content figcaption {
+  font-family: $sans-serif;
+}
+
+// 카드 제목은 본문색, 밑줄 없이
+.archive__item-title a {
+  color: $text-color;
+  text-decoration: none;
+  &:hover { color: $link-color; }
+}
+
+// 홈·카테고리 섹션
+.portfolio-section {
+  margin: 0 0 4em;
+  &__head {
+    margin-bottom: 1.5em;
+    padding-bottom: 0.75em;
+    border-bottom: 1px solid $border-color;
+  }
+  &__count {
+    margin-left: 0.35em;
+    font-size: 0.6em;
+    font-weight: 500;
+    color: $muted-text-color;
+    vertical-align: middle;
+  }
+  &__lead p {
+    max-width: 46em;
+    font-size: $type-size-5;
+    line-height: 1.8;
+  }
+}
+.portfolio-figure {
+  margin: 2em 0 0;
+  img { width: 100%; border: 1px solid $border-color; border-radius: 4px; }
+}
+
+// 그리드 카드: 사진 비율 고정, 제목 두 줄까지
+.entries-grid .archive__item-teaser {
+  aspect-ratio: 16 / 10;
+  max-height: none;
+  border-radius: 4px;
+  img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+}
+.entries-grid .archive__item-title {
+  margin-top: 0.75em;
+  font-size: $type-size-5;
+  line-height: 1.4;
+}
+.entries-grid .archive__item-excerpt {
+  font-size: $type-size-6;
+  color: $muted-text-color;
+}
+
+// 히어로: 제목만 있는 홈은 낮게
+.page__hero--overlay {
+  padding: 2.5em 0;
+}
+
+// 테마의 float 그리드 대신 CSS grid — 섹션이 옆으로 말려 올라가지 않게
+.entries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.5em 1.5em;
+  &::after { display: none; }
+  .grid__item {
+    float: none;
+    width: auto;
+    margin: 0;
+  }
+}
+.page__content .portfolio-section__title {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.page__content .portfolio-section__desc {
+  margin: 0;
+  font-size: $type-size-6;
+  line-height: 1.6;
+}
+
+// 상단 탭: 지금 보고 있는 곳 표시 (상세 페이지는 소속 카테고리)
+.masthead__menu-item a.is-active {
+  color: $primary-color;
+  font-weight: 600;
+}
+
+// 상세 갤러리: 사진·구성도 비율이 제각각이라 같은 칸 안에 맞춰 넣는다 (원본은 눌러서 크게 봄)
+.page__content figure.half,
+.page__content figure.third {
+  display: grid;
+  gap: 0.75em;
+  grid-template-columns: repeat(3, 1fr);
+  > a, > img { width: auto !important; margin: 0 !important; float: none !important; }
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;   // 구성도가 잘리지 않게 칸 안에 통째로
+    background: #F3F5F8;
+    border-radius: 4px;
+  }
+  figcaption { grid-column: 1 / -1; }
+  @include breakpoint(max-width $small) { grid-template-columns: repeat(2, 1fr); }
+}
+.page__content figure.half { grid-template-columns: repeat(2, 1fr); }
+.page__content h3 {
+  margin-top: 1.8em;
+  font-size: $type-size-5;
+  color: #0C162A;
+}
+
+// 언어 전환: 탭과 구분되는 작은 버튼
+.masthead__menu-item a.lang-toggle {
+  padding: 0.15em 0.6em;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  &:hover { border-color: $primary-color; }
+}
+
+// 상태 배지와 거르기 버튼
+.status-badge {
+  display: inline-block;
+  margin-top: 0.9em;
+  padding: 0.1em 0.55em;
+  border-radius: 3px;
+  font-size: 0.68em;
+  font-weight: 600;
+  line-height: 1.6;
+  &--done { background: #E6EDFB; color: #1F4FB5; }
+  &--ongoing { background: #EEF1F5; color: #4A5568; border: 1px solid #D5DBE3; }
+}
+.entries-grid .status-badge + .archive__item-title { margin-top: 0.35em; }
+.status-filter {
+  display: flex;
+  gap: 0.4em;
+  margin: 0 0 2em;
+  button {
+    padding: 0.35em 0.95em;
+    border: 1px solid $border-color;
+    border-radius: 999px;
+    background: #fff;
+    color: $text-color;
+    font: inherit;
+    font-size: $type-size-6;
+    cursor: pointer;
+    &[aria-pressed="true"] { background: #0C162A; border-color: #0C162A; color: #fff; }
+    &:hover:not([aria-pressed="true"]) { border-color: $primary-color; color: $primary-color; }
+  }
+}
+.grid__item[hidden], .portfolio-section[hidden] { display: none !important; }
+
+.site-logo img {
+  max-height: 1.25rem;
+}
+
+// ── Product(APEX OS) 페이지 ─────────────────────────────
+.apex-lead { max-width: 48em; font-size: $type-size-5; line-height: 1.8; margin: 0 0 2.5em; }
+.apex-more { margin: 0 0 2.5em; font-weight: 600; a { text-decoration: none; } }
+
+.apex-diagram {
+  margin: 0 0 4.5em;
+  padding: 2em;
+  border-radius: 6px;
+  background: #0C162A;
+  color: #E6EAF2;
+  &__head h2 { margin: 0; color: #fff; font-size: $h-size-3; border: 0; }
+  &__head p { margin: 0.3em 0 1.2em; color: #9AA6BC; font-size: $type-size-6; }
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1.5em;
+    margin-top: 1.5em;
+    @include breakpoint(max-width $medium) { grid-template-columns: 1fr; }
+  }
+  h3 { margin: 0 0 0.8em; color: #7F8BA3; font-size: 0.7em; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  ul { margin: 0; padding: 0; list-style: none; }
+}
+.apex-tabs {
+  display: flex; flex-wrap: wrap; gap: 0.4em;
+  button {
+    padding: 0.35em 1em; border: 1px solid #2E3B55; border-radius: 999px;
+    background: transparent; color: #C9D1E0; font: inherit; font-size: $type-size-6; cursor: pointer;
+    &[aria-selected="true"] { background: #fff; border-color: #fff; color: #0C162A; font-weight: 600; }
+  }
+}
+.apex-col--inputs li, .apex-col--workflows li {
+  padding: 0.55em 0; border-bottom: 1px solid #1F2A40; font-size: $type-size-6;
+}
+.apex-col--workflows li { color: #fff; font-weight: 600; }
+.apex-col--workflows li::before { content: "→ "; color: #5B8DEF; }
+.apex-modules {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5em;
+  @include breakpoint(max-width $small) { grid-template-columns: repeat(2, 1fr); }
+  li {
+    padding: 0.9em 0.8em; border: 1px solid #24314B; border-radius: 4px;
+    color: #5D6A84; font-size: $type-size-6; line-height: 1.35;
+    transition: background .2s, color .2s, border-color .2s;
+    &.is-on { background: #13234A; border-color: #5B8DEF; color: #fff; box-shadow: inset 0 0 0 1px rgba(91,141,239,.35); }
+  }
+}
+
+.apex-offer {
+  margin: 0 0 3.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid $border-color;
+  &__head {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 2em; margin-bottom: 1.8em;
+    @include breakpoint(max-width $medium) { grid-template-columns: 1fr; gap: 0.5em; }
+    h2 { margin: 0.1em 0 0.2em; border: 0; font-size: $h-size-2; color: #0C162A; }
+  }
+  &__letter { font-size: 0.7em; font-weight: 700; color: $muted-text-color; }
+  &__tag { margin: 0; color: $muted-text-color; font-size: $type-size-6; }
+  &__stage { display: inline-block; margin-left: 0.4em; padding: 0.05em 0.5em; border: 1px solid #D5DBE3; border-radius: 3px; font-size: 0.85em; }
+  &__outcomes {
+    margin: 0; padding: 0; list-style: none;
+    li { padding: 0.7em 0 0.7em 1.2em; border-top: 1px solid $border-color; font-size: $type-size-5; font-weight: 600; color: #0C162A; position: relative; }
+    li:last-child { border-bottom: 1px solid $border-color; }
+    li::before { content: ""; position: absolute; left: 0; top: 1.15em; width: 0.5em; height: 0.5em; background: #0C162A; }
+  }
+  &__grid {
+    display: grid; grid-template-columns: 1.3fr 1fr 0.8fr; gap: 2em;
+    @include breakpoint(max-width $medium) { grid-template-columns: 1fr; }
+    h3 { margin: 0 0 0.6em; padding-bottom: 0.6em; border-bottom: 1px solid $border-color; font-size: 0.72em; letter-spacing: 0.06em; color: $muted-text-color; }
+  }
+}
+.apex-list {
+  margin: 0; padding: 0; list-style: none;
+  li { padding: 0.5em 0; border-bottom: 1px solid #EEF1F5; font-size: $type-size-6; line-height: 1.6; }
+  &--data li::before { content: "› "; color: $primary-color; }
+}
+.apex-case { margin-left: 0.3em; padding: 0 0.4em; border-radius: 3px; background: #E6EDFB; color: #1F4FB5; font-size: 0.8em; font-weight: 600; white-space: nowrap; }
+.apex-arch { margin-top: 4em; }
+
+// 유형 칩과 거르기 두 줄
+.type-chip {
+  display: inline-block; margin: 0.9em 0.3em 0 0; padding: 0.1em 0.5em;
+  border: 1px solid #D5DBE3; border-radius: 3px; color: #4A5568; font-size: 0.66em; font-weight: 500; line-height: 1.6;
+}
+.status-badge { margin-right: 0.3em; }
+.entries-grid .type-chip + .archive__item-title { margin-top: 0.35em; }
+.portfolio-filter { margin: 0 0 2em; .status-filter { margin: 0 0 0.6em; flex-wrap: wrap; align-items: center; } }
+.filter-label { width: 3.2em; color: $muted-text-color; font-size: $type-size-7; font-weight: 600; }
+
+// ── 홈: 글은 줄이고 그림으로 ───────────────────────────
+.home-block { margin: 0 0 4em; }
+.home-title {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin: 0 0 1em; padding: 0; border: 0; font-size: $h-size-3; color: #0C162A;
+}
+.home-link { font-size: $type-size-6; font-weight: 600; text-decoration: none; }
+.home-apex {
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 2.5em; align-items: center;
+  margin: 0 0 4.5em;
+  @include breakpoint(max-width $medium) { grid-template-columns: 1fr; gap: 1.2em; }
+  h2 { margin: 0 0 0.3em; padding: 0; border: 0; font-size: $h-size-2; color: #0C162A; }
+  p { margin: 0 0 1em; font-size: $type-size-4; line-height: 1.6; color: $text-color; }
+}
+.home-apex__img img { display: block; width: 100%; border: 1px solid $border-color; border-radius: 6px; }
+.home-sol {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8em; margin: 0; padding: 0; list-style: none;
+  @include breakpoint(max-width $large) { grid-template-columns: repeat(2, 1fr); }
+  @include breakpoint(max-width $small) { grid-template-columns: repeat(2, 1fr); }
+  a {
+    position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 6px;
+    background-size: cover; background-position: center; text-decoration: none;
+  }
+  a:hover .home-sol__shade { background: linear-gradient(to top, rgba(12,22,42,.95), rgba(12,22,42,.35)); }
+}
+.home-sol__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,22,42,.9), rgba(12,22,42,.1) 60%); transition: background .2s; }
+.home-sol__label {
+  position: absolute; left: 1em; right: 1em; bottom: 1em; color: #fff;
+  strong { display: block; font-size: $type-size-5; line-height: 1.35; }
+  em { display: block; margin-top: 0.3em; font-style: normal; font-size: 0.72em; color: #C9D1E0; }
+}
+.entries-grid--compact .archive__item-title { margin-top: 0.7em; font-size: $type-size-6; line-height: 1.5; }
+
+// 솔루션 페이지
+.sol__desc { margin: 0 0 1em; font-size: $type-size-5; line-height: 1.75; }
+.sol__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; h3 { margin: 0 0 0.5em; font-size: 0.72em; letter-spacing: 0.06em; color: $muted-text-color; } }
+.sol .portfolio-section { margin: 0; }
+.type-chip--apex { border-color: #0C162A; background: #0C162A; color: #fff; }
+.entries-grid--compact { grid-template-columns: repeat(3, 1fr); @include breakpoint(max-width $small) { grid-template-columns: 1fr; } }
+
+// 홈: 글 없이 타일과 사진만
+.layout--splash .home-sol { margin-top: 2.5em; }
+.home-sol a { aspect-ratio: 4 / 5; }
+.home-sol__label strong { font-size: $type-size-4; letter-spacing: -0.01em; }
+.home-sol__label em { font-size: 0.8em; }
+.home-cases { margin: 3.5em 0 2em; }
+
+// 카드: 고객 한 줄 + 한 일
+.card-client { margin: 0.9em 0 0; color: $muted-text-color; font-size: 0.72em; font-weight: 600; letter-spacing: 0.01em; }
+.entries-grid .card-client + .archive__item-title { margin-top: 0.25em; }
+.status-badge + .card-client, .type-chip + .card-client { margin-top: 0.5em; }
+.entries-grid--compact .archive__item-title { font-size: $type-size-5; line-height: 1.45; }
+// 홈 분야 거르기
+.area-filter {
+  display: flex; flex-wrap: wrap; gap: 0.4em; margin: 2.5em 0 2em;
+  button {
+    padding: 0.4em 1.1em; border: 1px solid $border-color; border-radius: 999px; background: #fff;
+    color: $text-color; font: inherit; font-size: $type-size-6; cursor: pointer;
+    &[aria-pressed="true"] { background: #0C162A; border-color: #0C162A; color: #fff; }
+    &:hover:not([aria-pressed="true"]) { border-color: $primary-color; color: $primary-color; }
+  }
+}
+.home-cases { margin-top: 0; }
+.entries-grid .card-client { margin: 0.75em 0 0; font-size: 0.8rem; line-height: 1.4; }
+.entries-grid .card-client + .archive__item-title { margin-top: 0.15em; }
+.layout--splash .area-filter { margin-top: 3em; }
+.home-cases .entries-grid { row-gap: 3em; }

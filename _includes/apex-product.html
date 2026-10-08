@@ -1,0 +1,84 @@
+{%- comment -%}
+Product(APEX OS) 페이지 본문. 원고는 _data/apex.yml. 사용: {% include apex-product.html lang="ko" %}
+① 입력 → 온톨로지 모듈 → 업무 도식(Offering 탭을 누르면 쓰는 모듈이 켜짐) ② Offering 별 목표·구현 예·데이터·사용자
+{%- endcomment -%}
+{%- assign L = include.lang | default: "ko" -%}
+{%- assign T = site.data.apex[L] -%}
+{%- assign X = site.data.apex -%}
+
+<section class="apex-diagram" data-apex-diagram>
+  <div class="apex-diagram__head">
+    <h2>{{ T.diagram_title }}</h2>
+    <p>{{ T.diagram_sub }}</p>
+    <div class="apex-tabs" role="tablist">
+      {%- for o in X.offerings -%}
+      <button type="button" role="tab" data-offer="{{ o.key }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">{{ o.name | remove: "APEX " }}</button>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="apex-diagram__body">
+    <div class="apex-col apex-col--inputs">
+      <h3>{{ T.inputs_label }}</h3>
+      <ul>{% for i in X.inputs %}<li>{{ i[L] }}</li>{% endfor %}</ul>
+    </div>
+    <div class="apex-col apex-col--modules">
+      <h3>{{ T.modules_label }}</h3>
+      <ul class="apex-modules">
+        {%- for m in X.modules -%}
+        {%- capture offers -%}{%- for o in X.offerings -%}{%- if o.modules contains m.id -%}{{ o.key }} {% endif -%}{%- endfor -%}{%- endcapture -%}
+        <li data-in="{{ offers | strip }}">{{ m[L] }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="apex-col apex-col--workflows">
+      <h3>{{ T.workflows_label }}</h3>
+      {%- for o in X.offerings -%}
+      <ul data-wf="{{ o.key }}"{% unless forloop.first %} hidden{% endunless %}>{% for w in o.workflows[L] %}<li>{{ w }}</li>{% endfor %}</ul>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- for o in X.offerings %}
+<section class="apex-offer" id="{{ o.key }}">
+  <div class="apex-offer__head">
+    <div>
+      <span class="apex-offer__letter">{{ o.letter }}</span>
+      <h2>{{ o.name }}</h2>
+      <p class="apex-offer__tag">{{ o.tagline[L] }} <span class="apex-offer__stage">{{ o.stage[L] }}</span></p>
+    </div>
+    <ul class="apex-offer__outcomes">{% for g in o.outcomes[L] %}<li>{{ g }}</li>{% endfor %}</ul>
+  </div>
+  <div class="apex-offer__grid">
+    <div>
+      <h3>{{ T.examples_label }}</h3>
+      <ul class="apex-list apex-list--examples">
+        {%- for e in o.examples[L] -%}
+        <li>{{ e.text }}{% if e.case %} <span class="apex-case">{{ T.case_prefix }} · {% if L == "en" %}Company {% endif %}{{ e.case }}</span>{% endif %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div>
+      <h3>{{ T.data_label }}</h3>
+      <ul class="apex-list apex-list--data">{% for d in o.data[L] %}<li>{{ d }}</li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h3>{{ T.personas_label }}</h3>
+      <ul class="apex-list apex-list--personas">{% for p in o.personas[L] %}<li>{{ p }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+{%- endfor %}
+
+<script>
+  (function () {
+    var box = document.querySelector("[data-apex-diagram]"); if (!box) return;
+    function show(key) {
+      box.querySelectorAll("[data-offer]").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.offer === key ? "true" : "false"); });
+      box.querySelectorAll(".apex-modules li").forEach(function (li) { li.classList.toggle("is-on", (" " + li.dataset.in + " ").indexOf(" " + key + " ") > -1); });
+      box.querySelectorAll("[data-wf]").forEach(function (ul) { ul.hidden = ul.dataset.wf !== key; });
+    }
+    box.addEventListener("click", function (e) { var b = e.target.closest("[data-offer]"); if (b) show(b.dataset.offer); });
+    show("plan");
+  })();
+</script>

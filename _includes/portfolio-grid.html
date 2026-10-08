@@ -1,0 +1,13 @@
+{% comment %} 사용: {% include portfolio-grid.html solution="cv" collection="portfolio_en" limit=6 featured=true %} — 조건을 비우면 전체 {% endcomment %}
+{% assign coll = site[include.collection] | default: site.portfolio %}
+{% assign en = false %}{% if include.collection == "portfolio_en" %}{% assign en = true %}{% endif %}
+{% assign items = coll | sort: "order" %}
+{% if include.solution %}{% assign items = items | where: "solution", include.solution %}{% endif %}
+{% if include.kind %}{% assign items = items | where: "kind", include.kind %}{% endif %}
+{% if include.featured %}{% assign items = items | where: "featured", true %}{% endif %}
+<div class="entries-grid{% if include.compact %} entries-grid--compact{% endif %}">
+{% for post in items %}
+  {% if include.limit and forloop.index > include.limit %}{% break %}{% endif %}
+  {% include portfolio-card.html en=en compact=include.compact %}
+{% endfor %}
+</div>

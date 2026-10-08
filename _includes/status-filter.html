@@ -1,0 +1,36 @@
+{%- comment -%} 분야(솔루션)·상태 거르기. 두 줄은 AND. 사용: {% include status-filter.html en=true %} {%- endcomment -%}
+{%- assign L = "ko" -%}{%- if include.en -%}{%- assign L = "en" -%}{%- endif -%}
+<div class="portfolio-filter">
+  <div class="status-filter" role="group" data-dim="status" aria-label="{% if include.en %}Status{% else %}상태{% endif %}">
+    <span class="filter-label">{% if include.en %}Status{% else %}상태{% endif %}</span>
+    <button type="button" data-filter="all" aria-pressed="true">{% if include.en %}All{% else %}전체{% endif %}</button>
+    <button type="button" data-filter="done" aria-pressed="false">{% if include.en %}Completed{% else %}완료{% endif %}</button>
+    <button type="button" data-filter="ongoing" aria-pressed="false">{% if include.en %}In progress{% else %}진행 중{% endif %}</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var box = document.currentScript.previousElementSibling;
+    var sel = { status: "all", solution: "all" };
+    function apply() {
+      document.querySelectorAll(".portfolio-section").forEach(function (sec) {
+        var items = sec.querySelectorAll(".grid__item"); if (!items.length) return;
+        var shown = 0;
+        items.forEach(function (it) {
+          var ok = (sel.status === "all" || it.dataset.status === sel.status) && (sel.solution === "all" || it.dataset.solution === sel.solution);
+          it.hidden = !ok; if (ok) shown++;
+        });
+        var count = sec.querySelector(".portfolio-section__count"); if (count) count.textContent = shown;
+        sec.hidden = shown === 0;
+      });
+    }
+    box.addEventListener("click", function (e) {
+      var btn = e.target.closest("button"); if (!btn) return;
+      var grp = btn.closest("[data-dim]");
+      grp.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+      sel[grp.dataset.dim] = btn.dataset.filter; apply();
+    });
+    var q = new URLSearchParams(location.search).get("area");
+    if (q) { var b = box.querySelector('[data-dim="solution"] [data-filter="' + q + '"]'); if (b) b.click(); }
+  })();
+</script>
