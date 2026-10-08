@@ -1,0 +1,12 @@
+{%- comment -%} 상세 페이지 «주요 수치». front matter metrics: [{value, label, note}] — note 는 «목표»·«내부 시험» 같은 단서 {%- endcomment -%}
+{%- if page.metrics -%}
+<div class="metrics">
+  {%- for m in page.metrics %}
+  <div class="metrics__item">
+    <span class="metrics__value">{{ m.value }}</span>
+    <span class="metrics__label">{{ m.label }}</span>
+    {%- if m.note %}<span class="metrics__note">{{ m.note }}</span>{% endif %}
+  </div>
+  {%- endfor %}
+</div>
+{%- endif -%}

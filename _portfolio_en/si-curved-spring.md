@@ -39,6 +39,15 @@ gallery:
     image_path: /assets/images/portfolio/si-curved-spring/05-th.jpg
     alt: "Deviation from the normal baseline, visualized"
     title: "Deviation from the normal baseline, visualized"
+metrics:
+  - value: "19/19"
+    label: "Real defects detected"
+    note: "In-house test"
+  - value: "0.17%"
+    label: "False rejects on good parts"
+    note: "In-house test"
+  - value: "0.11–0.19 s"
+    label: "Decision time per part (budget 0.3 s)"
 ---
 
 Curved springs are bent by design, so curvature and pitch have to come out even. Until now, skilled operators adjusted the machine by feel and only samples were inspected, so defects were sometimes found late.
@@ -46,9 +55,5 @@ Curved springs are bent by design, so curvature and pitch have to come out even.
 Inside a dark enclosure, four lights switch on one after another and the images are combined into a single frame that shows the spring's shape and surface clearly. Real defect samples are scarce on the floor, so the baseline is built from good parts only. Each spring is compared with the normal profile for its part number to see how far its shape deviates (z-score), and a model trained on good parts flags local surface defects through reconstruction error. Results go to the PLC, which pushes defective springs off the line and receives forming-offset corrections. On the monitoring screen, SPC control charts and Cp/Cpk show the state of the process.
 
 JISHIN designed and built the dark-enclosure inspection units and the dedicated conveyor; installation and PLC connection were completed in June 2026.
-
-### Development-stage evaluation (in-house, before pilot production)
-- All 19 real defect samples detected, 0.17% false rejects on good parts
-- 0.11–0.19 s per decision (budget 0.3 s)
 
 {% include gallery %}

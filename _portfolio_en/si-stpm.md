@@ -30,6 +30,11 @@ gallery:
     image_path: /assets/images/portfolio/si-stpm/03-th.jpg
     alt: "Real-time overview (OEE and remaining life)"
     title: "Real-time overview (OEE and remaining life)"
+metrics:
+  - value: "20"
+    label: "Shot blasters and loading robots"
+  - value: "~20 million"
+    label: "Time-series readings used (10 months)"
 ---
 
 From about 20 million time-series readings collected over 10 months on 20 shot-blasting machines at Company D's Plant 1 (14 vibration sensors, 6 loading robots), we built a GRU Seq2Seq anomaly detection model and completed on-site validation.

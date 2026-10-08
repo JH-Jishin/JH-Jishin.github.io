@@ -35,8 +35,17 @@ gallery:
     image_path: /assets/images/portfolio/si-spring-inspection/04-th.jpg
     alt: "후공정 24캠 배치와 검사 화면"
     title: "후공정 24캠 배치와 검사 화면"
+metrics:
+  - value: "99.9%"
+    label: "후공정 검출 정확도"
+    note: "시양산 기준"
+  - value: "12만 개/일"
+    label: "스프링 전수 검사"
+  - value: "22유형"
+    label: "판정 불량 유형"
+  - value: "30대"
+    label: "카메라 (열처리 6 · 후공정 24)"
 ---
-
 D사 2공장의 스프링 라인 두 곳에 비전 AI를 붙였습니다.
 
 ### 열처리 공정 실시간 이상 감시

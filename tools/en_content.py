@@ -108,6 +108,71 @@ CAPTION = {
     "직접 제작한 암실 검사장치": "Dark-enclosure inspection units built in-house",
 }
 
+METRIC = {
+    "20개": "20",
+    "가스 사용량 절감 (생산 1매당)": "Gas use reduction (per unit)",
+    "2025.06 대비 2026.06": "Jun 2025 vs Jun 2026",
+    "공정 불량률": "Process defect rate",
+    "이상 탐지 AUC-ROC": "Anomaly detection AUC-ROC",
+    "합성 이상 기준": "Synthetic anomalies",
+    "온도 센서 1초 단위 수집": "Temperature sensors read every second",
+    "후공정 검출 정확도": "Post-process detection accuracy",
+    "시양산 기준": "Pilot production",
+    "12만 개/일": "120,000/day",
+    "스프링 전수 검사": "Springs inspected, 100%",
+    "22유형": "22 types",
+    "판정 불량 유형": "Defect types judged",
+    "30대": "30",
+    "카메라 (열처리 6 · 후공정 24)": "Cameras (6 heat treatment · 24 post-process)",
+    "공구 오배치 검출 정확도": "Misplaced-tool detection accuracy",
+    "자체 시험": "In-house test",
+    "특허 출원": "Patent applications",
+    "2건": "2",
+    "실물 불량 검출": "Real defects detected",
+    "내부 시험": "In-house test",
+    "양품 오검출률": "False rejects on good parts",
+    "0.11~0.19초": "0.11–0.19 s",
+    "장당 판정 시간 (허용 0.3초)": "Decision time per part (budget 0.3 s)",
+    "마킹 탐지 F1": "Marking detection F1",
+    "색상 분류 정확도": "Color classification accuracy",
+    "2개월": "2 months",
+    "PoC부터 기존 비전 대체까지": "From PoC to replacing the old vision system",
+    "스프링 길이 측정": "Spring length measurement",
+    "6개": "6",
+    "자동 보정하는 연마석": "Grinding stones adjusted automatically",
+    "연마면 분할 mIoU": "Ground-surface segmentation mIoU",
+    "목표": "Target",
+    "20대": "20",
+    "쇼트기·장입 로봇": "Shot blasters and loading robots",
+    "약 2천만 건": "~20 million",
+    "학습한 시계열 데이터 (10개월)": "Time-series readings used (10 months)",
+    "분석한 셋팅 사이클": "Setting cycles analyzed",
+    "15분→1분 미만": "15 → <1 min",
+    "철심 식별·이력 확인 (건당)": "Core identification and history lookup (per item)",
+    "8%↓": "8% fewer",
+    "불량 건수": "Defects",
+    "3%↑": "3% more",
+    "생산량": "Output",
+    "15분": "15 min",
+    "한전 계량 데이터 자동 수집 주기": "KEPCO metering collection interval",
+    "10대": "10",
+    "실시간 계측 설비": "Machines metered in real time",
+    "7개": "7",
+    "에너지 관리 화면": "Energy management screens",
+    "46건 · 131,166개": "46 orders · 131,166 units",
+    "질의 한 번에 집계한 작업지시": "Work orders compiled in one query",
+    "4종": "4",
+    "연결한 시스템 (MES·ERP·SCADA·품질)": "Systems connected (MES · ERP · SCADA · quality)",
+    "이론재고 기존 워크북과 일치": "Theoretical inventory matching the existing workbook",
+    "잔여·부족 판정 일치": "Remaining and shortage results matching",
+    "당일계획 판정 일치": "Same-day plan decisions matching",
+    "일 계획 수립 시간": "Daily planning time",
+    "3곳": "3",
+    "구축 대상 공장": "Plants in scope",
+    "3h→20~30분": "3 h → 20–30 m",
+    "정기 보고서 작성 시간": "Time to produce a regular report",
+}
+
 PAGES = {
     "apex-a-ontology": (
         "Company D (Ontology platform linking work orders, material lots and machine conditions)",
@@ -130,14 +195,12 @@ Reading work orders, demand, capacity and inventory together, it totals volume b
         """
 Company S makes automotive mirrors through injection molding, painting and assembly. The automaker's plan changes two to four times a day, and one planner spent three to four hours building each assembly plan in an Excel workbook. Decisions such as how to split work into shifts relied on experienced staff, model by model.
 
-### Workshop and kickoff
-A three-day on-site workshop in August 2026 produced 28 requirements, and assembly planning automation was chosen as the first project. After the September kickoff, interviews with the planner broke the job into seven data-preparation steps and five planning steps.
-
 ### What we are building
 Theoretical inventory is confirmed from customer sequences (previous stock + previous plan − actuals − unproduced), short specs are flagged, and the system generates shift-by-shift work orders and the SAP upload file. MES, SAP, paint-shop SCADA, customer sequences and Excel planning files are tied together in the APEX OS ontology, and the decisions experts make — with their reasons — are kept as history to inform the next plan. The planner sees the evidence for each step beside the result, compares it with their own estimate, and then confirms.
 
-### Progress
-Checked against the existing workbook, theoretical inventory matched 52 of 52, remaining and shortage 312 of 312, and same-day plan decisions 416 of 416. After a first demo, it will run in Shadow Mode alongside the current method before going into production.
+### Next step
+After a first demo, it will be validated in Shadow Mode alongside the current method and then put into production.
+
 """),
     "apex-k-mes-agent": (
         "Company K (MES-connected AI Q&A and run/idle monitoring)",
@@ -153,8 +216,6 @@ Plant MES data is moved into a cleaned database for AI and tied into the APEX OS
 - Team KPI dashboards and automatic weekly and monthly reports
 - Mold shot-count alerts and draft repair requests
 
-### Progress
-After a pilot kickoff in August 2026 and a contract in October, the build covers three plants through February 2027.
 """),
     "si-drying-temp-ai": (
         "Company S (AI temperature recommendation and anomaly alerts for a molded pulp drying line)",
@@ -164,11 +225,6 @@ The line that dries molded pulp products runs around the clock. Zone set points 
 
 We collect 20 temperature sensors (5 zones × 4 heights) every second and added outdoor temperature and humidity sensors. Data flows from the PLC and HMI to an on-site AI PC and is stored twice, on site and in the cloud. A LightGBM regression model per sensor raises an alert when the residual exceeds ±3σ, and 38 features over 30-minute windows decide quality OK/NG. From 1,000 temperature offset trials and a grid search we found the minimum drying temperature for each zone, which appears on the dashboard every morning at 6 as the recommended set point.
 
-### Results (June 2025 vs June 2026, per unit produced)
-
-- Gas use down 3.46%: 0.00935 → 0.00903 m³ per unit (target 2.5%)
-- Process defect rate 0.58% → 0.27% (target 0.3% or lower)
-- Anomaly detection AUC-ROC 0.990 (synthetic anomalies), quality judgment F1 0.90
 """),
     "si-spring-inspection": (
         "Company D (Multi-channel edge AI vision for 100% spring inspection with line interlock)",
@@ -190,10 +246,6 @@ Company J coats steel cores with rubber or urethane, ships them, and recoats wor
 
 A portable laser engraver marks a unique ID on the side of each core, and when a tablet on the floor photographs it, AI OCR reads the number. The ID links to the work order automatically, and the in-house and customer numbers are stored in the MES as a pair. Barcode labels on semi-finished goods let them be tracked by cart (LOT), and we are building toward a paperless flow that covers tablet-based web work orders and PLC monitoring of ovens and vulcanizers.
 
-### Targets
-
-- Core identification and history lookup: 15 minutes → under 1 minute per item
-- Defects down 8%, output up 3%
 """),
     "si-cutting-tool-ai": (
         "Company S (Vision AI that detects misplaced cutting tools on machining centers, cross-checked with FOCAS)",
@@ -203,11 +255,7 @@ When operators load milling arbors into a machining center's automatic tool chan
 
 We fitted two machining centers with cameras, a kiosk and a tower lamp. A YOLO-based model tells apart five tool types and an unclamped state, compares the result with tool number, coordinates and spindle data from FANUC FOCAS, and raises an alarm when a tool is wrong. Machine 1 computes on the internal network; machine 2 runs in the cloud. We selected and labeled 2,555 images from more than 60,000 originals and trained on night-time data as well.
 
-### Results
-- Detection accuracy above 95% (in-house test: mAP@0.5 0.95, F1 0.932)
-- Two prototype units running on site, two patent applications filed
-
-### Phase 2
+### Expansion
 We are building an integrated monitoring system that cross-checks against work orders and extends coverage to six machines.
 """),
     "si-fems": (
@@ -222,8 +270,6 @@ Upload the plant drawing, drag machines onto it, and each one shows live power (
 ### KEPCO data integration
 We connected contract, monthly billing and 15-minute metering data from the KEPCO PowerPlanner OpenAPI. The server collects 15-minute readings automatically and uses them for live usage, expected cost and carbon intensity. On the forecasting screen, users can change contract power and unit price to see how the bill would change.
 
-### Progress
-All six findings from the August 2026 review were resolved and reported complete, and the system is running on site.
 """),
     "si-curved-spring": (
         "Company D (Curvature-aware photometric AI vision with automatic rejection)",
@@ -235,9 +281,6 @@ Inside a dark enclosure, four lights switch on one after another and the images 
 
 JISHIN designed and built the dark-enclosure inspection units and the dedicated conveyor; installation and PLC connection were completed in June 2026.
 
-### Development-stage evaluation (in-house, before pilot production)
-- All 19 real defect samples detected, 0.17% false rejects on good parts
-- 0.11–0.19 s per decision (budget 0.3 s)
 """),
     "si-grinder-ai": (
         "Company D (Vision judgment of spring grinding and self-adjusting grinding stones)",
@@ -261,8 +304,6 @@ A floor-plan dashboard shows each machine's risk score and how many need immedia
         """
 Springs carry color markings that identify vehicle model and load class. At Company D's Plant 1, cameras now detect the position and color of each marking together and check them against the specification. After a two-month PoC and commissioning, the system replaced the existing vision setup.
 
-### Results
-- In-house test: marking detection F1 0.987, color classification accuracy 0.989
 """),
     "si-load-control": (
         "Company D (Stroke–load curve based automatic load correction for cold setting)",

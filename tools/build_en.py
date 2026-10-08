@@ -5,7 +5,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from en_content import CAPTION, LABEL, PAGES, VALUE
+from en_content import CAPTION, LABEL, METRIC, PAGES, VALUE
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC, DST = os.path.join(ROOT, "_portfolio"), os.path.join(ROOT, "_portfolio_en")
@@ -24,12 +24,12 @@ for f in sorted(os.listdir(SRC)):
 
     def tr(m):
         key, val = m.group(1), m.group(2)
-        out = CAPTION.get(val) or VALUE.get(val) or LABEL.get(val) or val
+        out = CAPTION.get(val) or VALUE.get(val) or LABEL.get(val) or METRIC.get(val) or val
         if out == val and re.search("[가-힣]", val):
             missing.append(f"{slug}: {val}")
         return f'{key}"{out}"'
 
-    fm = re.sub(r'^(\s*(?:- )?(?:title|text|alt): )"(.*)"$', tr, fm, flags=re.M)
+    fm = re.sub(r'^(\s*(?:- )?(?:title|text|alt|label|note|value): )"(.*)"$', tr, fm, flags=re.M)
     gallery = "\n\n{% include gallery %}\n" if "gallery:" in fm else "\n"
     with open(os.path.join(DST, f), "w", encoding="utf-8") as out:
         out.write(f"---\n{fm}---\n\n{body.strip()}{gallery}")

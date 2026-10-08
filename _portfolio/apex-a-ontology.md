@@ -31,8 +31,12 @@ gallery:
     image_path: /assets/images/portfolio/apex-a-ontology/03-th.jpg
     alt: "자연어 질의로 집계한 작업지시 현황"
     title: "자연어 질의로 집계한 작업지시 현황"
+metrics:
+  - value: "46건 · 131,166개"
+    label: "질의 한 번에 집계한 작업지시"
+  - value: "4종"
+    label: "연결한 시스템 (MES·ERP·SCADA·품질)"
 ---
-
 D사 1공장의 MES, ERP(SAP), SCADA, 품질 데이터를 하나의 온톨로지로 묶어 실데이터로 검증하고 있습니다. 작업지시와 수요, 생산능력, 재고가 같은 객체 체계 위에 놓여 있어 담당자가 자연어로 물으면 APEX OS가 여러 시스템을 함께 조회해 답합니다.
 
 ### 관제 대시보드

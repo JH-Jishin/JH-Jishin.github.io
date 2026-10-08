@@ -30,6 +30,14 @@ gallery:
     image_path: /assets/images/portfolio/si-grinder-ai/03-th.jpg
     alt: "Semi-automatic labeling of ground surfaces"
     title: "Semi-automatic labeling of ground surfaces"
+metrics:
+  - value: "±5mm"
+    label: "Spring length measurement"
+  - value: "6"
+    label: "Grinding stones adjusted automatically"
+  - value: "90%+"
+    label: "Ground-surface segmentation mIoU"
+    note: "Target"
 ---
 
 On the grinder that finishes both ends of a spring, operators set the position and speed of six grinding stones by eye, so quality varied with whoever did the setup.

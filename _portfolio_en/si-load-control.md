@@ -22,6 +22,9 @@ gallery:
     image_path: /assets/images/portfolio/si-load-control/01-th.jpg
     alt: "Measured load–stroke curves"
     title: "Measured load–stroke curves"
+metrics:
+  - value: "5,609"
+    label: "Setting cycles analyzed"
 ---
 
 The cold-setting process has a load adjustment device, but the final load still varied with operator skill.
