@@ -25,19 +25,27 @@ permalink: /en/
 </section>
 
 <section class="gate">
-  <a class="gate__panel gate__panel--apex" href="{{ '/en/apex-os/' | relative_url }}">
-    <img src="{{ '/assets/images/apex/s2_hub.jpg' | relative_url }}" alt="">
-    <span class="gate__label"><strong>APEX OS</strong><em>{{ n_apex }} Projects</em></span>
-  </a>
-  <div class="gate__panel gate__panel--product">
-    <a class="gate__cover" href="{{ '/en/product/' | relative_url }}" style="background-image:url('{{ '/assets/images/portfolio/si-spring-inspection/teaser.jpg' | relative_url }}')">
-      <span class="gate__label"><strong>Product</strong><em>{{ n_prod }} Projects</em></span>
-    </a>
-    <ul class="gate__areas">
-      {%- for s in site.data.solutions %}{% unless s.key == "onto" %}
-      <li><a href="{{ '/en/product/' | relative_url }}#{{ s.key }}">{{ s.name.en }}<span>{{ all | where: "solution", s.key | size }}</span></a></li>
-      {%- endunless %}{% endfor %}
-    </ul>
+  <div class="gate__panel">
+    <a class="gate__img gate__img--diagram" href="{{ '/en/apex-os/' | relative_url }}"><img src="{{ '/assets/images/apex/s2_hub.jpg' | relative_url }}" alt=""></a>
+    <div class="gate__bar">
+      <a class="gate__title" href="{{ '/en/apex-os/' | relative_url }}"><strong>APEX OS</strong><em>{{ n_apex }} Projects</em></a>
+      <ul class="gate__subs">
+        {%- for o in site.data.apex.offerings %}
+        <li><a href="{{ '/en/apex-os/' | relative_url }}">{{ o.name | remove: "APEX " }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="gate__panel">
+    <a class="gate__img" href="{{ '/en/product/' | relative_url }}" style="background-image:url('{{ '/assets/images/portfolio/si-spring-inspection/teaser.jpg' | relative_url }}')"></a>
+    <div class="gate__bar">
+      <a class="gate__title" href="{{ '/en/product/' | relative_url }}"><strong>Product</strong><em>{{ n_prod }} Projects</em></a>
+      <ul class="gate__subs">
+        {%- for s in site.data.solutions %}{% unless s.key == "onto" %}
+        <li><a href="{{ '/en/product/' | relative_url }}#{{ s.key }}">{{ s.name.en }} <span>{{ all | where: "solution", s.key | size }}</span></a></li>
+        {%- endunless %}{% endfor %}
+      </ul>
+    </div>
   </div>
 </section>
 
