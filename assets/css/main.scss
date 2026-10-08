@@ -383,3 +383,43 @@ figcaption,
     border: 1px solid $border-color;
   }
 }
+
+// ── 홈 표지: 현장 사진 모자이크 + Portfolio ──
+.hero-mosaic {
+  position: relative; margin: 1.5em 0 1.2em; height: 420px; overflow: hidden; border-radius: 8px; background: #0C162A;
+  @include breakpoint(max-width $small) { height: 300px; }
+}
+.hero-mosaic__grid {
+  position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px;
+  span { background-size: cover; background-position: center; filter: grayscale(35%); }
+}
+.hero-mosaic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,22,42,.92) 0%, rgba(12,22,42,.7) 45%, rgba(12,22,42,.25) 100%); }
+.hero-mosaic__text {
+  position: absolute; z-index: 1; left: 2.2em; bottom: 1.8em; color: #fff;
+  span { display: block; font-size: 0.8em; font-weight: 700; letter-spacing: 0.3em; color: #9AA6BC; }
+  h1 { margin: 0.1em 0 0; font-size: 4.2em; font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: #fff;
+       @include breakpoint(max-width $small) { font-size: 2.8em; } }
+}
+// 두 갈래 입구
+.gate {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin: 0 0 4em;
+  @include breakpoint(max-width $medium) { grid-template-columns: 1fr; }
+}
+.gate__panel { position: relative; display: block; overflow: hidden; border-radius: 8px; border: 1px solid $border-color; text-decoration: none; }
+.gate__panel--apex { background: #F3F5F8; img { display: block; width: 100%; height: 260px; object-fit: contain; padding: 1.2em; transition: transform .3s; } &:hover img { transform: scale(1.02); } }
+.gate__cover { position: relative; display: block; height: 260px; background-size: cover; background-position: center; text-decoration: none;
+  &::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,22,42,.85), rgba(12,22,42,.05) 60%); } }
+.gate__label {
+  position: absolute; z-index: 1; left: 1.2em; bottom: 1em; display: flex; align-items: baseline; gap: 0.6em;
+  strong { font-size: $h-size-3; color: #fff; }
+  em { font-style: normal; font-size: $type-size-6; color: #C9D1E0; }
+}
+.gate__panel--apex .gate__label { left: 0; right: 0; bottom: 0; padding: 0.9em 1.2em; background: #0C162A; }
+.gate__areas {
+  display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; list-style: none; border-top: 1px solid $border-color;
+  li + li { border-left: 1px solid $border-color; }
+  a { display: flex; justify-content: space-between; padding: 0.95em 1.1em; color: #0C162A; font-size: $type-size-6; font-weight: 600; text-decoration: none; }
+  a:hover { background: #F3F5F8; color: $primary-color; }
+  span { color: $muted-text-color; font-weight: 500; }
+}
+.layout--splash .area-filter { margin-top: 0; }
