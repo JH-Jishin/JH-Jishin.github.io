@@ -28,17 +28,13 @@ gallery:
     image_path: /assets/images/portfolio/si-marking-vision/03-th.jpg
     alt: "Color marking detection result"
     title: "Color marking detection result"
-metrics:
-  - value: "0.987"
-    label: "Marking detection F1"
-    note: "In-house test"
-  - value: "0.989"
-    label: "Color classification accuracy"
-    note: "In-house test"
-  - value: "2 months"
-    label: "From PoC to replacing the old vision system"
 ---
 
 Springs carry color markings that identify vehicle model and load class. At Company D's Plant 1, cameras now detect the position and color of each marking together and check them against the specification. After a two-month PoC and commissioning, the system replaced the existing vision setup.
+
+
+### Results
+- Marking detection F1 0.987, color classification accuracy 0.989 (in-house test)
+- Two months from PoC to replacing the existing vision system
 
 {% include gallery %}

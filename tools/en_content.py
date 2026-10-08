@@ -188,6 +188,10 @@ When the defect rate crosses its limit, the agent traces MES, ERP and SCADA hist
 
 ### Production planning
 Reading work orders, demand, capacity and inventory together, it totals volume by line and works out line assignment, sequence and cost. One natural-language query organized 46 work orders covering 131,166 units and flagged that more than half of the volume was still waiting.
+
+### Results
+- Four systems (MES, ERP, SCADA, quality) linked in one ontology
+- One natural-language query compiled 46 work orders covering 131,166 units
 """),
     "apex-m-assembly-planning": (
         "Company S (Sequence-driven assembly planning automation)",
@@ -197,6 +201,10 @@ Company S makes automotive mirrors through injection molding, painting and assem
 
 ### What we are building
 Theoretical inventory is confirmed from customer sequences (previous stock + previous plan − actuals − unproduced), short specs are flagged, and the system generates shift-by-shift work orders and the SAP upload file. MES, SAP, paint-shop SCADA, customer sequences and Excel planning files are tied together in the APEX OS ontology, and the decisions experts make — with their reasons — are kept as history to inform the next plan. The planner sees the evidence for each step beside the result, compares it with their own estimate, and then confirms.
+
+### Results
+- Matched the existing workbook: theoretical inventory 52/52, remaining and shortage 312/312, same-day plan decisions 416/416
+- Daily planning time 8.0 h → 1.5 h (target)
 
 ### Next step
 After a first demo, it will be validated in Shadow Mode alongside the current method and then put into production.
@@ -216,6 +224,10 @@ Plant MES data is moved into a cleaned database for AI and tied into the APEX OS
 - Team KPI dashboards and automatic weekly and monthly reports
 - Mold shot-count alerts and draft repair requests
 
+
+### Results
+- Built for three plants
+- Regular report preparation 3 hours → 20–30 minutes (target)
 """),
     "si-drying-temp-ai": (
         "Company S (AI temperature recommendation and anomaly alerts for a molded pulp drying line)",
@@ -225,6 +237,11 @@ The line that dries molded pulp products runs around the clock. Zone set points 
 
 We collect 20 temperature sensors (5 zones × 4 heights) every second and added outdoor temperature and humidity sensors. Data flows from the PLC and HMI to an on-site AI PC and is stored twice, on site and in the cloud. A LightGBM regression model per sensor raises an alert when the residual exceeds ±3σ, and 38 features over 30-minute windows decide quality OK/NG. From 1,000 temperature offset trials and a grid search we found the minimum drying temperature for each zone, which appears on the dashboard every morning at 6 as the recommended set point.
 
+
+### Results
+- Gas use per unit down 3.46% (June 2025 vs June 2026)
+- Process defect rate 0.58% → 0.27%
+- Anomaly detection AUC-ROC 0.990 (synthetic anomalies), quality judgment F1 0.90
 """),
     "si-spring-inspection": (
         "Company D (Multi-channel edge AI vision for 100% spring inspection with line interlock)",
@@ -237,6 +254,10 @@ Two 5 MP machine-vision cameras face the coil line and four 8 MP cameras watch f
 
 ### 100% surface inspection after processing
 Twenty-four cameras on the left and right lines photograph all 120,000 springs a day and judge 22 defect types, including insufficient grinding, reversed marking and partial marking. The 10 to 30 defects found each day are pushed off the line through the PLC. Detection accuracy is 99.9% in pilot production, and we are working toward 99.99%.
+
+### Results
+- 100% inspection of 120,000 springs a day with 30 cameras
+- 22 defect types judged, 99.9% detection accuracy in pilot production
 """),
     "si-ocr-mes": (
         "Company J (Laser engraving and AI OCR for steel core ID with barcode-linked paperless MES)",
@@ -246,6 +267,10 @@ Company J coats steel cores with rubber or urethane, ships them, and recoats wor
 
 A portable laser engraver marks a unique ID on the side of each core, and when a tablet on the floor photographs it, AI OCR reads the number. The ID links to the work order automatically, and the in-house and customer numbers are stored in the MES as a pair. Barcode labels on semi-finished goods let them be tracked by cart (LOT), and we are building toward a paperless flow that covers tablet-based web work orders and PLC monitoring of ovens and vulcanizers.
 
+
+### Results
+- Core identification and history lookup: 15 minutes → under 1 minute per item (target)
+- 8% fewer defects and 3% more output (target)
 """),
     "si-cutting-tool-ai": (
         "Company S (Vision AI that detects misplaced cutting tools on machining centers, cross-checked with FOCAS)",
@@ -257,6 +282,10 @@ We fitted two machining centers with cameras, a kiosk and a tower lamp. A YOLO-b
 
 ### Expansion
 We are building an integrated monitoring system that cross-checks against work orders and extends coverage to six machines.
+
+### Results
+- Misplaced-tool detection accuracy above 95% (in-house test: mAP@0.5 0.95, F1 0.932)
+- Running on two machining centers, two patent applications filed
 """),
     "si-fems": (
         "Company E (Real-time factory energy management (FEMS) linked to KEPCO tariffs)",
@@ -270,6 +299,10 @@ Upload the plant drawing, drag machines onto it, and each one shows live power (
 ### KEPCO data integration
 We connected contract, monthly billing and 15-minute metering data from the KEPCO PowerPlanner OpenAPI. The server collects 15-minute readings automatically and uses them for live usage, expected cost and carbon intensity. On the forecasting screen, users can change contract power and unit price to see how the bill would change.
 
+
+### Results
+- Live power metering on 10 machines, with KEPCO metering data collected automatically every 15 minutes
+- Seven energy screens bring usage, cost and carbon intensity per machine into one place
 """),
     "si-curved-spring": (
         "Company D (Curvature-aware photometric AI vision with automatic rejection)",
@@ -281,6 +314,10 @@ Inside a dark enclosure, four lights switch on one after another and the images 
 
 JISHIN designed and built the dark-enclosure inspection units and the dedicated conveyor; installation and PLC connection were completed in June 2026.
 
+
+### Results
+- In-house test: all 19 real defects detected, 0.17% false rejects on good parts
+- 0.11–0.19 s per decision (budget 0.3 s)
 """),
     "si-grinder-ai": (
         "Company D (Vision judgment of spring grinding and self-adjusting grinding stones)",
@@ -289,6 +326,10 @@ JISHIN designed and built the dark-enclosure inspection units and the dedicated 
 On the grinder that finishes both ends of a spring, operators set the position and speed of six grinding stones by eye, so quality varied with whoever did the setup.
 
 A top camera measures spring length within ±5 mm, and side cameras segment the ground surface (targeting mIoU of 90% or higher) to score how well it is ground. That score and the free-height difference correct PLC parameters so the stones adjust themselves, and every spring gets a pass/fail result and a history record. Grinding-height measurement and correction went live on site in July 2026, with automatic rejection of defective parts running alongside.
+
+### Results
+- Spring length measured within ±5 mm, six grinding stones adjusted automatically
+- Working toward ground-surface segmentation mIoU of 90% or higher
 """),
     "si-stpm": (
         "Company D (Time-series AI predictive maintenance for shot blasters and loading robots)",
@@ -297,6 +338,9 @@ A top camera measures spring length within ±5 mm, and side cameras segment the 
 From about 20 million time-series readings collected over 10 months on 20 shot-blasting machines at Company D's Plant 1 (14 vibration sensors, 6 loading robots), we built a GRU Seq2Seq anomaly detection model and completed on-site validation.
 
 A floor-plan dashboard shows each machine's risk score and how many need immediate maintenance or inspection, and sends alerts when warning signs appear.
+
+### Results
+- Model trained on about 20 million readings from 20 machines over 10 months
 """),
     "si-marking-vision": (
         "Company D (Vision AI for identifying color markings on springs)",
@@ -304,6 +348,10 @@ A floor-plan dashboard shows each machine's risk score and how many need immedia
         """
 Springs carry color markings that identify vehicle model and load class. At Company D's Plant 1, cameras now detect the position and color of each marking together and check them against the specification. After a two-month PoC and commissioning, the system replaced the existing vision setup.
 
+
+### Results
+- Marking detection F1 0.987, color classification accuracy 0.989 (in-house test)
+- Two months from PoC to replacing the existing vision system
 """),
     "si-load-control": (
         "Company D (Stroke–load curve based automatic load correction for cold setting)",
@@ -312,6 +360,9 @@ Springs carry color markings that identify vehicle model and load class. At Comp
 The cold-setting process has a load adjustment device, but the final load still varied with operator skill.
 
 We analyzed stroke–load curves from 5,609 cycles of machine logs to find the variables that drive load, and are building a setup in which AI calculates RAM and stroke corrections and sends them to the PLC. Before going live, it is validated with a shadow test that compares results without actually controlling the machine.
+
+### Results
+- Analyzed 5,609 setting cycles to find the variables that drive load
 """),
     "si-grind-inspection-darkroom": (
         "Company D (Upgraded spring grinding inspection and dark-enclosure packaging line)",

@@ -429,17 +429,3 @@ figcaption,
 .layout--splash .area-filter { margin-top: 0; }
 .gate__bar { flex-direction: column; align-items: flex-start; justify-content: center; gap: 0.7em; flex: 1; }
 .gate__subs a { font-size: 0.72em; }
-
-// 상세 페이지 «주요 수치»
-.metrics {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0;
-  margin: 0.5em 0 2.2em; border-top: 2px solid #0C162A; border-bottom: 1px solid $border-color;
-}
-.metrics__item { position: relative; padding: 1.1em 1em 1.1em 0; }
-.metrics__item + .metrics__item { padding-left: 1em; border-left: 1px solid $border-color; }
-.metrics__value { display: block; font-size: 1.75em; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: #0C162A; }
-.metrics__label { display: block; margin-top: 0.35em; font-size: $type-size-6; line-height: 1.45; color: $text-color; }
-.metrics__note { display: inline-block; margin-top: 0.45em; padding: 0 0.45em; border: 1px solid #D5DBE3; border-radius: 3px; font-size: 0.68em; font-weight: 600; color: #4A5568; }
-@include breakpoint(max-width $small) { .metrics__item + .metrics__item { padding-left: 0; border-left: 0; border-top: 1px solid $border-color; } }
-.metrics { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
-.metrics__value { font-size: 1.55em; }

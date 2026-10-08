@@ -37,20 +37,15 @@ gallery:
     image_path: /assets/images/portfolio/si-ocr-mes/04-th.jpg
     alt: "Portable laser engraver"
     title: "Portable laser engraver"
-metrics:
-  - value: "15 → <1 min"
-    label: "Core identification and history lookup (per item)"
-    note: "Target"
-  - value: "8% fewer"
-    label: "Defects"
-    note: "Target"
-  - value: "3% more"
-    label: "Output"
-    note: "Target"
 ---
 
 Company J coats steel cores with rubber or urethane, ships them, and recoats worn rolls when they come back. There are more than 10,000 kinds of cores, which people told apart by eye, and chalk or paint marks wore off in high-heat and shot-blasting steps, breaking the history. Each core also carried both an in-house number and a customer number, which added to the confusion.
 
 A portable laser engraver marks a unique ID on the side of each core, and when a tablet on the floor photographs it, AI OCR reads the number. The ID links to the work order automatically, and the in-house and customer numbers are stored in the MES as a pair. Barcode labels on semi-finished goods let them be tracked by cart (LOT), and we are building toward a paperless flow that covers tablet-based web work orders and PLC monitoring of ovens and vulcanizers.
+
+
+### Results
+- Core identification and history lookup: 15 minutes → under 1 minute per item (target)
+- 8% fewer defects and 3% more output (target)
 
 {% include gallery %}

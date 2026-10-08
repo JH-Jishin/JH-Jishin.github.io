@@ -34,12 +34,6 @@ gallery:
     image_path: /assets/images/portfolio/apex-k-mes-agent/04-th.jpg
     alt: "Mold shot-count alerts (sample screen)"
     title: "Mold shot-count alerts (sample screen)"
-metrics:
-  - value: "3"
-    label: "Plants in scope"
-  - value: "3 h → 20–30 m"
-    label: "Time to produce a regular report"
-    note: "Target"
 ---
 
 Company K runs stamping, injection, plating and assembly. Each team downloaded MES data into Excel to build PowerPoint reports, taking around three hours per regular report. Utilization was only totaled per day, so day and night shifts couldn't be separated, and planned stops mixed with real downtime made utilization look lower than it was. There was no alert when a mold's shot count passed its limit.
@@ -51,5 +45,10 @@ Plant MES data is moved into a cleaned database for AI and tied into the APEX OS
 - AI Q&A that answers with the evidence: which data was queried and how
 - Team KPI dashboards and automatic weekly and monthly reports
 - Mold shot-count alerts and draft repair requests
+
+
+### Results
+- Built for three plants
+- Regular report preparation 3 hours → 20–30 minutes (target)
 
 {% include gallery %}

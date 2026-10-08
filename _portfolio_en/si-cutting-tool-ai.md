@@ -33,18 +33,6 @@ gallery:
     image_path: /assets/images/portfolio/si-cutting-tool-ai/03-th.jpg
     alt: "Live monitoring screen (tool number and coordinates)"
     title: "Live monitoring screen (tool number and coordinates)"
-metrics:
-  - value: "95%+"
-    label: "Misplaced-tool detection accuracy"
-    note: "In-house test"
-  - value: "0.95"
-    label: "mAP@0.5"
-    note: "In-house test"
-  - value: "0.932"
-    label: "F1"
-    note: "In-house test"
-  - value: "2"
-    label: "Patent applications"
 ---
 
 When operators load milling arbors into a machining center's automatic tool changer (ATC) by hand, a tool can be missed or seated wrong, and if machining starts that way the spindle crashes. Robotic alternatives cost hundreds of millions of won, out of reach for a small die shop.
@@ -53,5 +41,9 @@ We fitted two machining centers with cameras, a kiosk and a tower lamp. A YOLO-b
 
 ### Expansion
 We are building an integrated monitoring system that cross-checks against work orders and extends coverage to six machines.
+
+### Results
+- Misplaced-tool detection accuracy above 95% (in-house test: mAP@0.5 0.95, F1 0.932)
+- Running on two machining centers, two patent applications filed
 
 {% include gallery %}

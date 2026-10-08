@@ -35,16 +35,6 @@ gallery:
     image_path: /assets/images/portfolio/si-spring-inspection/04-th.jpg
     alt: "24-camera layout and inspection screen"
     title: "24-camera layout and inspection screen"
-metrics:
-  - value: "99.9%"
-    label: "Post-process detection accuracy"
-    note: "Pilot production"
-  - value: "120,000/day"
-    label: "Springs inspected, 100%"
-  - value: "22 types"
-    label: "Defect types judged"
-  - value: "30"
-    label: "Cameras (6 heat treatment · 24 post-process)"
 ---
 
 We added vision AI to two spring lines at Company D's Plant 2.
@@ -54,5 +44,9 @@ Two 5 MP machine-vision cameras face the coil line and four 8 MP cameras watch f
 
 ### 100% surface inspection after processing
 Twenty-four cameras on the left and right lines photograph all 120,000 springs a day and judge 22 defect types, including insufficient grinding, reversed marking and partial marking. The 10 to 30 defects found each day are pushed off the line through the PLC. Detection accuracy is 99.9% in pilot production, and we are working toward 99.99%.
+
+### Results
+- 100% inspection of 120,000 springs a day with 30 cameras
+- 22 defect types judged, 99.9% detection accuracy in pilot production
 
 {% include gallery %}

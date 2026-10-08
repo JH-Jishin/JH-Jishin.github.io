@@ -22,12 +22,12 @@ gallery:
     image_path: /assets/images/portfolio/si-load-control/01-th.jpg
     alt: "하중-스트로크 측정 곡선"
     title: "하중-스트로크 측정 곡선"
-metrics:
-  - value: "5,609"
-    label: "분석한 셋팅 사이클"
 ---
 냉간 세팅 공정에는 하중 조절 장치가 있지만, 작업자 숙련도에 따라 결과 하중이 달라졌습니다.
 
 설비 로그 5,609사이클의 Stroke-Load 곡선을 분석해 하중을 좌우하는 변수를 찾았습니다. AI가 RAM·Stroke 보정값을 계산해 PLC로 넘기는 구조를 만들고 있습니다. 현장에 넣기 전에는 실제 제어 없이 결과만 비교하는 Shadow Test로 검증합니다.
+
+### 결과
+- 셋팅 로그 5,609사이클을 분석해 하중을 좌우하는 변수 도출
 
 {% include gallery %}

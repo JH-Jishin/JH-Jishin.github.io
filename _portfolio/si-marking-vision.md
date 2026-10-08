@@ -28,16 +28,11 @@ gallery:
     image_path: /assets/images/portfolio/si-marking-vision/03-th.jpg
     alt: "색상 마킹 검출 결과"
     title: "색상 마킹 검출 결과"
-metrics:
-  - value: "0.987"
-    label: "마킹 탐지 F1"
-    note: "자체 시험"
-  - value: "0.989"
-    label: "색상 분류 정확도"
-    note: "자체 시험"
-  - value: "2개월"
-    label: "PoC부터 기존 비전 대체까지"
 ---
 스프링에는 차종과 하중 구분을 위한 색상 마킹이 찍힙니다. D사 1공장에서 카메라로 마킹의 위치와 색을 함께 검출해 사양과 맞는지 확인하도록 했습니다. 두 달간 PoC와 시운전을 거쳐 기존 비전 시스템을 대체했습니다.
+
+### 결과
+- 마킹 탐지 F1 0.987, 색상 분류 정확도 0.989 (자체 시험)
+- PoC부터 기존 비전 시스템 대체까지 2개월
 
 {% include gallery %}

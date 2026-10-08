@@ -36,13 +36,6 @@ gallery:
     image_path: /assets/images/portfolio/si-fems/04-th.jpg
     alt: "Eight equipment symbols"
     title: "Eight equipment symbols"
-metrics:
-  - value: "15 min"
-    label: "KEPCO metering collection interval"
-  - value: "10"
-    label: "Machines metered in real time"
-  - value: "7"
-    label: "Energy management screen"
 ---
 
 We built a factory energy management system (FEMS) together with an MES for a plant with powder (bead mill) and coating (plasma) processes. The customer handled the data collection hardware and database; JISHIN built the screens, back end and AI.
@@ -52,5 +45,10 @@ Upload the plant drawing, drag machines onto it, and each one shows live power (
 
 ### KEPCO data integration
 We connected contract, monthly billing and 15-minute metering data from the KEPCO PowerPlanner OpenAPI. The server collects 15-minute readings automatically and uses them for live usage, expected cost and carbon intensity. On the forecasting screen, users can change contract power and unit price to see how the bill would change.
+
+
+### Results
+- Live power metering on 10 machines, with KEPCO metering data collected automatically every 15 minutes
+- Seven energy screens bring usage, cost and carbon intensity per machine into one place
 
 {% include gallery %}
