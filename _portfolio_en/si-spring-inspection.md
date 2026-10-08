@@ -21,18 +21,26 @@ header:
 gallery:
   - url: /assets/images/portfolio/si-spring-inspection/01.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/01-th.jpg
-    alt: "Front camera stage installed"
-    title: "Front camera stage installed"
+    alt: "Inspection camera stage over the spring conveyor"
+    title: "Inspection camera stage over the spring conveyor"
   - url: /assets/images/portfolio/si-spring-inspection/02.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/02-th.jpg
-    alt: "Post-process inspection unit installed on site"
-    title: "Post-process inspection unit installed on site"
+    alt: "Camera module in a light-shielding case"
+    title: "Camera module in a light-shielding case"
   - url: /assets/images/portfolio/si-spring-inspection/03.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/03-th.jpg
-    alt: "Left–right symmetry (gap) check on the front view"
-    title: "Left–right symmetry (gap) check on the front view"
+    alt: "Operator kiosk beside the line"
+    title: "Operator kiosk beside the line"
   - url: /assets/images/portfolio/si-spring-inspection/04.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/04-th.jpg
+    alt: "AI PC and control cabinet"
+    title: "AI PC and control cabinet"
+  - url: /assets/images/portfolio/si-spring-inspection/05.jpg
+    image_path: /assets/images/portfolio/si-spring-inspection/05-th.jpg
+    alt: "Post-process inspection unit installed on site"
+    title: "Post-process inspection unit installed on site"
+  - url: /assets/images/portfolio/si-spring-inspection/06.jpg
+    image_path: /assets/images/portfolio/si-spring-inspection/06-th.jpg
     alt: "24-camera layout and inspection screen"
     title: "24-camera layout and inspection screen"
 ---

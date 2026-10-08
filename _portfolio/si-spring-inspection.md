@@ -21,18 +21,26 @@ header:
 gallery:
   - url: /assets/images/portfolio/si-spring-inspection/01.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/01-th.jpg
-    alt: "정면 카메라 스테이지 설치"
-    title: "정면 카메라 스테이지 설치"
+    alt: "스프링 이송 라인 위 검사 카메라 스테이지"
+    title: "스프링 이송 라인 위 검사 카메라 스테이지"
   - url: /assets/images/portfolio/si-spring-inspection/02.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/02-th.jpg
-    alt: "후공정 검사장치 현장 설치"
-    title: "후공정 검사장치 현장 설치"
+    alt: "카메라 모듈 암막 케이스"
+    title: "카메라 모듈 암막 케이스"
   - url: /assets/images/portfolio/si-spring-inspection/03.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/03-th.jpg
-    alt: "정면 영상 좌우 대칭(gap) 판정"
-    title: "정면 영상 좌우 대칭(gap) 판정"
+    alt: "라인 옆 작업자 키오스크"
+    title: "라인 옆 작업자 키오스크"
   - url: /assets/images/portfolio/si-spring-inspection/04.jpg
     image_path: /assets/images/portfolio/si-spring-inspection/04-th.jpg
+    alt: "AI PC·제어 캐비닛"
+    title: "AI PC·제어 캐비닛"
+  - url: /assets/images/portfolio/si-spring-inspection/05.jpg
+    image_path: /assets/images/portfolio/si-spring-inspection/05-th.jpg
+    alt: "후공정 검사장치 현장 설치"
+    title: "후공정 검사장치 현장 설치"
+  - url: /assets/images/portfolio/si-spring-inspection/06.jpg
+    image_path: /assets/images/portfolio/si-spring-inspection/06-th.jpg
     alt: "후공정 24캠 배치와 검사 화면"
     title: "후공정 24캠 배치와 검사 화면"
 ---
