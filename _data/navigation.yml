@@ -1,11 +1,7 @@
 main:
   - title: "APEX OS"
     url: /apex-os/
-  - title: "Computer Vision"
-    url: /computer-vision/
-  - title: "Time Series"
-    url: /time-series/
-  - title: "Software"
-    url: /software/
+  - title: "Product"
+    url: /product/
   - title: "EN"
     url: /en/

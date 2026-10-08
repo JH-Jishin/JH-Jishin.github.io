@@ -10,7 +10,7 @@
     var kind = {{ page.kind | default: "" | jsonify }};
     var area = {{ page.area | default: page.solution | default: "" | jsonify }};
     var labels = {};
-    var tab = kind === "product" ? "/apex-os/" : { "onto": "/apex-os/", "cv": "/computer-vision/", "ts": "/time-series/", "sw": "/software/" }[area];
+    var tab = (kind === "apex" || area === "onto") ? "/apex-os/" : (kind === "product" || ["cv","ts","sw"].indexOf(area) > -1) ? "/product/" : "";
     document.documentElement.lang = isEn ? "en" : "ko";
     document.querySelectorAll(".masthead__menu-item a").forEach(function (a) {
       var href = a.getAttribute("href").slice(base.length);

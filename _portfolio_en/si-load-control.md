@@ -2,7 +2,7 @@
 title: "Company D (Stroke–load curve based automatic load correction for cold setting)"
 status: ongoing
 types: ["Time Series", "Optimization · Control"]
-solution: opt
+solution: ts
 kind: si
 order: 8
 excerpt: "Uses AI correction values to even out load results that used to depend on operator skill"

@@ -15,6 +15,13 @@ sidebar:
     text: "2026.08 ~"
   - title: "상태"
     text: "구축 진행 중"
+header:
+  teaser: /assets/images/portfolio/apex-m-assembly-planning/teaser.jpg
+gallery:
+  - url: /assets/images/portfolio/apex-m-assembly-planning/01.jpg
+    image_path: /assets/images/portfolio/apex-m-assembly-planning/01-th.jpg
+    alt: "APEX Plan 생산계획 수립 구조"
+    title: "APEX Plan 생산계획 수립 구조"
 ---
 
 S사의 조립 생산계획은 담당자 한 사람의 엑셀 워크북으로 돌아갑니다. 매일 아침 완성차 고객사 포털에서 서열을 공장별로 내려받고 메신저로 통보된 불량을 손으로 옮겨 적은 뒤, 이론재고를 계산하고 부족한 사양을 찾아 작업지시서를 뽑습니다. 사양별 수량을 비율 하나로 끌어올리는 일부터 차수 배정, 대차 단위 분할, SAP 순서생산 업로드까지 사람이 직접 이어 붙입니다.
@@ -24,3 +31,5 @@ S사의 조립 생산계획은 담당자 한 사람의 엑셀 워크북으로 �
 ### 진행
 - 2026년 9월 온사이트 인터뷰 3회, 워크북 규칙 확인표 작성
 - 조립 라인 다음으로 도장·사출 라인 계획까지 넓힐 예정
+
+{% include gallery %}

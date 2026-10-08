@@ -2,7 +2,7 @@
 title: "Company S (AI temperature recommendation and anomaly alerts for a molded pulp drying line)"
 status: done
 types: ["Time Series", "Optimization · Control"]
-solution: opt
+solution: ts
 featured: true
 kind: si
 order: 1

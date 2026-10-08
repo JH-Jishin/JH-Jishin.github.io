@@ -15,6 +15,13 @@ sidebar:
     text: "2026.08 ~"
   - title: "Status"
     text: "Build in progress"
+header:
+  teaser: /assets/images/portfolio/apex-m-assembly-planning/teaser.jpg
+gallery:
+  - url: /assets/images/portfolio/apex-m-assembly-planning/01.jpg
+    image_path: /assets/images/portfolio/apex-m-assembly-planning/01-th.jpg
+    alt: "APEX Plan production planning structure"
+    title: "APEX Plan production planning structure"
 ---
 
 Company S's assembly planning runs on one planner's Excel workbook. Every morning the planner downloads delivery sequences by plant from the automaker's portal, copies defect reports received by messenger into the sheet by hand, calculates theoretical inventory, finds the specs that will run short, and prints work orders. Scaling quantities by a single ratio, assigning shifts, splitting into cart-sized lots and preparing the SAP sequence-production upload are all stitched together by hand.
@@ -24,3 +31,5 @@ JISHIN is unpacking the workbook's formulas and labels one by one, confirming wh
 ### Progress
 - Three on-site interviews in September 2026 and a confirmed rule sheet for the workbook
 - Planning for painting and injection lines to follow the assembly line
+
+{% include gallery %}

@@ -2,7 +2,7 @@
 title: "Company S (AI-based factory production optimization system)"
 status: done
 types: ["Optimization · Control"]
-solution: opt
+solution: ts
 kind: si
 order: 13
 excerpt: "Built an AI system for production optimization based on factory production data"

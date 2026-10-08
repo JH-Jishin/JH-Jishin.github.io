@@ -60,6 +60,7 @@ CAPTION = {
     "투입 → 컨베이어 → AI 검사 구성": "Infeed → conveyor → AI inspection layout",
     "후공정 검사 카메라 마운트": "Camera mount for post-process inspection",
     "휴대용 레이저 각인기": "Portable laser engraver",
+    "APEX Plan 생산계획 수립 구조": "APEX Plan production planning structure",
     "건조 라인 데이터 흐름과 MES 연동 구성": "Drying line data flow and MES integration",
     "AI 솔루션 기술 구성": "AI solution technical architecture",
     "OCR·MES 시스템 구성": "OCR and MES system architecture",
