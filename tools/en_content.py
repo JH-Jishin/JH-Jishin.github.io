@@ -60,6 +60,8 @@ CAPTION = {
     "투입 → 컨베이어 → AI 검사 구성": "Infeed → conveyor → AI inspection layout",
     "후공정 검사 카메라 마운트": "Camera mount for post-process inspection",
     "휴대용 레이저 각인기": "Portable laser engraver",
+    "라인에 설치한 포장 수량 검사장치": "Pack count inspection unit installed on the line",
+    "포장 내 스프링 수량 AI 집계 화면": "AI count of springs in a pack",
     "APEX Plan 생산계획 수립 구조": "APEX Plan production planning structure",
     "건조 라인 데이터 흐름과 MES 연동 구성": "Drying line data flow and MES integration",
     "AI 솔루션 기술 구성": "AI solution technical architecture",
@@ -235,10 +237,22 @@ We analyzed stroke–load curves from 5,609 cycles of machine logs to find the v
 This project improves the spring grinding inspection equipment at Company D's Plant 2 and applies dark-enclosure packaging to an existing line. We supply the machine-vision hardware, AI models and back-end and dashboard software, and handle installation and commissioning.
 """),
     "si-spring-packaging": (
-        "Company D (AI system for spring packaging)",
-        "Applies AI to the spring packaging process",
+        "Company D (AI vision pack count inspection for springs)",
+        "Cameras photograph packed springs, AI counts them and checks the count against the standard before shipping",
         """
-This project applies an AI system to the spring packaging process at Company D's Plant 2.
+### Background
+Operators were checking spring counts by eye and by hand during packing, and fatigue from the repetitive work could lead to counting errors. Shipping short or over-filled packs leads to customer claims and rework costs.
+
+### How it works
+1. Look up the part number in production and its standard pack quantity from the database in real time.
+2. Photograph each packed tray on the conveyor with the installed camera.
+3. Analyze the image with AI to count the springs in the pack.
+4. Compare the count with the standard quantity and judge whether they match.
+
+### Expected benefits
+- Less manual counting work for operators
+- Short or over-filled packs caught before shipping
+- Fewer customer claims and less rework from count mismatches
 """),
     "si-press-vision": (
         "Company C (AI vision defect detection and automatic sorting for pressed parts)",

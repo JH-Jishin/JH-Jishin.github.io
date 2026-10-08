@@ -24,6 +24,7 @@ PICK = {
     "si-smartfactory-rnd": (1, "fit"),
     "si-spring-inspection": (1, "photo"),
     "si-stpm": (1, "fit"),
+    "si-spring-packaging": (1, "photo"),
     "apex-m-assembly-planning": (1, "fit"),
 }
 
