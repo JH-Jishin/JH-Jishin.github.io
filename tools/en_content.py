@@ -60,6 +60,21 @@ CAPTION = {
     "투입 → 컨베이어 → AI 검사 구성": "Infeed → conveyor → AI inspection layout",
     "후공정 검사 카메라 마운트": "Camera mount for post-process inspection",
     "휴대용 레이저 각인기": "Portable laser engraver",
+    "Ontology · LLM Agent · MES Integration": "Ontology · LLM Agent · MES Integration",
+    "Energy Monitoring · KEPCO OpenAPI · Demand Forecast": "Energy Monitoring · KEPCO OpenAPI · Demand Forecast",
+    "자동차 커넥터·전장부품 제조사": "Automotive connector and electrical parts maker",
+    "구축 착수": "Build started",
+    "금형 타발 알림(화면 예시)": "Mold shot-count alerts (sample screen)",
+    "팀별 KPI 대시보드(화면 예시)": "Team KPI dashboard (sample screen)",
+    "근거를 보여주는 AI 질의응답(화면 예시)": "AI Q&A with traceable evidence (sample screen)",
+    "실시간 가동·비가동 모니터링(화면 예시)": "Live run/idle monitoring (sample screen)",
+    "이론재고를 계산하는 노드 그래프": "Theoretical-inventory logic as a node graph",
+    "숙련자 판단을 쌓는 APEX OS 구성": "How APEX OS builds up expert judgment",
+    "발주에서 사출까지, 공정별 숙련자 판단": "Where expert judgment shapes each stage of the plan",
+    "설비 심볼 8종": "Eight equipment symbols",
+    "한전 사용량·요금 화면": "KEPCO usage and tariff view",
+    "유효·비효율 사용량 리포트": "Effective vs. wasted usage report",
+    "도면 위 설비별 에너지 모니터링": "Energy per machine on the floor plan",
     "라인에 설치한 포장 수량 검사장치": "Pack count inspection unit installed on the line",
     "포장 내 스프링 수량 AI 집계 화면": "AI count of springs in a pack",
     "APEX Plan 생산계획 수립 구조": "APEX Plan production planning structure",
@@ -111,15 +126,35 @@ Reading work orders, demand, capacity and inventory together, it totals volume b
 """),
     "apex-m-assembly-planning": (
         "Company S (Sequence-driven assembly planning automation)",
-        "Moves assembly planning that ran on Excel workbooks and messenger chats onto the ontology, linking sequence intake to work orders in one flow",
+        "Moves assembly planning that one planner ran in Excel onto the ontology and builds up expert decisions as history for recommendations",
         """
-Company S's assembly planning runs on one planner's Excel workbook. Every morning the planner downloads delivery sequences by plant from the automaker's portal, copies defect reports received by messenger into the sheet by hand, calculates theoretical inventory, finds the specs that will run short, and prints work orders. Scaling quantities by a single ratio, assigning shifts, splitting into cart-sized lots and preparing the SAP sequence-production upload are all stitched together by hand.
+Company S makes automotive mirrors through injection molding, painting and assembly. The automaker's plan changes two to four times a day, and one planner spent three to four hours building each assembly plan in an Excel workbook. Decisions such as how to split work into shifts relied on experienced staff, model by model.
 
-JISHIN is unpacking the workbook's formulas and labels one by one, confirming what they mean in interviews with the planner, and moving those rules into APEX OS ontology objects and constraints. Six MES views (production results, run history, line status, two inventory views and issue history) are connected so theoretical inventory reconciles automatically; the first scope runs up to entering D+3 production quantities and comparing the result with the existing plan. A simulator screen the planner can run directly is being built alongside.
+### Workshop and kickoff
+A three-day on-site workshop in August 2026 produced 28 requirements, and assembly planning automation was chosen as the first project. After the September kickoff, interviews with the planner broke the job into seven data-preparation steps and five planning steps.
+
+### What we are building
+Theoretical inventory is confirmed from customer sequences (previous stock + previous plan − actuals − unproduced), short specs are flagged, and the system generates shift-by-shift work orders and the SAP upload file. MES, SAP, paint-shop SCADA, customer sequences and Excel planning files are tied together in the APEX OS ontology, and the decisions experts make — with their reasons — are kept as history to inform the next plan. The planner sees the evidence for each step beside the result, compares it with their own estimate, and then confirms.
 
 ### Progress
-- Three on-site interviews in September 2026 and a confirmed rule sheet for the workbook
-- Planning for painting and injection lines to follow the assembly line
+Checked against the existing workbook, theoretical inventory matched 52 of 52, remaining and shortage 312 of 312, and same-day plan decisions 416 of 416. After a first demo, it will run in Shadow Mode alongside the current method before going into production.
+"""),
+    "apex-k-mes-agent": (
+        "Company K (MES-connected AI Q&A and run/idle monitoring)",
+        "Cleans MES data into an ontology and builds run/idle monitoring, AI Q&A that shows its evidence, and automated reporting",
+        """
+Company K runs stamping, injection, plating and assembly. Each team downloaded MES data into Excel to build PowerPoint reports, taking around three hours per regular report. Utilization was only totaled per day, so day and night shifts couldn't be separated, and planned stops mixed with real downtime made utilization look lower than it was. There was no alert when a mold's shot count passed its limit.
+
+### What we are building
+Plant MES data is moved into a cleaned database for AI and tied into the APEX OS ontology, so screens, reports and Q&A all read the same data. It is installed on premises.
+
+- Live run/idle, labor-hour and materials/warehouse monitoring
+- AI Q&A that answers with the evidence: which data was queried and how
+- Team KPI dashboards and automatic weekly and monthly reports
+- Mold shot-count alerts and draft repair requests
+
+### Progress
+After a pilot kickoff in August 2026 and a contract in October, the build covers three plants through February 2027.
 """),
     "si-drying-temp-ai": (
         "Company S (AI temperature recommendation and anomaly alerts for a molded pulp drying line)",
@@ -177,11 +212,18 @@ We are building an integrated monitoring system that cross-checks against work o
 """),
     "si-fems": (
         "Company E (Real-time factory energy management (FEMS) linked to KEPCO tariffs)",
-        "See live power and wasted usage per machine on the floor plan, with KEPCO costs and carbon intensity on one screen",
+        "Energy per machine on the floor plan, KEPCO tariff data and demand forecasting in one system",
         """
-We built a factory energy management system (FEMS) together with an MES for a plant that makes powder and coating materials. The customer handled the data collection hardware and database; JISHIN built the screens, back end and AI.
+We built a factory energy management system (FEMS) together with an MES for a plant with powder (bead mill) and coating (plasma) processes. The customer handled the data collection hardware and database; JISHIN built the screens, back end and AI.
 
-On the equipment layout, operators see live power (kW) per machine and check effective versus wasted usage by hour along with alarm logs. Through the KEPCO PowerPlanner API, monthly converted cost and usage are compared with the previous month and the same month last year. Carbon emission intensity and reports by machine and for the whole plant are included.
+### Energy per machine on the floor plan
+Upload the plant drawing, drag machines onto it, and each one shows live power (kW) and effective versus wasted usage right where it sits. Positions are stored relative to the drawing, so they stay put at any screen size. Seven screens cover machine monitoring, alarm logs (monthly top 3 and statistics), per-machine and plant-wide reports, KEPCO usage, carbon intensity and energy demand forecasting.
+
+### KEPCO data integration
+We connected contract, monthly billing and 15-minute metering data from the KEPCO PowerPlanner OpenAPI. The server collects 15-minute readings automatically and uses them for live usage, expected cost and carbon intensity. On the forecasting screen, users can change contract power and unit price to see how the bill would change.
+
+### Progress
+All six findings from the August 2026 review were resolved and reported complete, and the system is running on site.
 """),
     "si-curved-spring": (
         "Company D (Curvature-aware photometric AI vision with automatic rejection)",

@@ -14,7 +14,7 @@ PICK = {
     "si-curved-spring": (1, "fit"),
     "si-cutting-tool-ai": (1, "photo"),
     "si-drying-temp-ai": (4, "fit"),
-    "si-fems": (2, "fit"),
+    "si-fems": (1, "fit"),
     "si-grind-inspection-darkroom": (1, "photo"),
     "si-grinder-ai": (2, "photo"),
     "si-load-control": (1, "fit"),
@@ -25,7 +25,8 @@ PICK = {
     "si-spring-inspection": (1, "photo"),
     "si-stpm": (1, "fit"),
     "si-spring-packaging": (1, "photo"),
-    "apex-m-assembly-planning": (1, "fit"),
+    "apex-m-assembly-planning": (2, "fit"),
+    "apex-k-mes-agent": (1, "fit"),
 }
 
 
